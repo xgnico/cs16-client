@@ -94,6 +94,19 @@ public:
 	{
 		return !gHUD.m_Scoreboard.m_bForceDraw && !gHUD.m_Scoreboard.m_bShowscoresHeld;
 	}
+
+	const char *GetPlayerLocation( int entindex ) override
+	{
+		if ( gHUD.GetGameType() == GAME_CZERO )
+		{
+			if ( entindex >= 1 && entindex <= MAX_PLAYERS )
+			{
+				return g_PlayerExtraInfo[entindex].location;
+			}
+		}
+
+		return "";
+	}
 };
 static CCStrikeVoiceStatusHelper g_VoiceStatusHelper;
 
@@ -358,10 +371,6 @@ void CHud :: Init( void )
 	m_SniperScope.Init();
 	m_NVG.Init();
 
-	// Spectator GUI is not need in singleplayer czeror
-	if( GetGameType() != GAME_CZERODS )
-		m_SpectatorGui.Init();
-
 	// Game HUD things
 	m_Ammo.Init();
 	m_Health.Init();
@@ -389,6 +398,11 @@ void CHud :: Init( void )
 	// all things that have own background and must be drawn last
 	m_ProgressBar.Init();
 	m_Menu.Init();
+
+	// Spectator GUI is not need in singleplayer czeror
+	if( GetGameType() != GAME_CZERODS )
+		m_SpectatorGui.Init();
+
 	m_Scoreboard.Init();
 
 	GetClientVoice()->Init( &g_VoiceStatusHelper );
