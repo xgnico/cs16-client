@@ -250,6 +250,21 @@ int DLLEXPORT HUD_UpdateClientData(client_data_t *pcldata, float flTime )
 
 /*
 ==========================
+	HUD_GetPlayerTeam
+
+Returns the team number of a player.
+==========================
+*/
+
+int DLLEXPORT HUD_GetPlayerTeam(int playerIndex)
+{
+	if (playerIndex < 1 || playerIndex > MAX_PLAYERS)
+		return 0;
+	return g_PlayerExtraInfo[playerIndex].teamnumber;
+}
+
+/*
+==========================
 	HUD_Reset
 
 Called at start and end of demos to restore to "non"HUD state.
