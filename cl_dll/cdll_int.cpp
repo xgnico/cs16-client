@@ -256,7 +256,7 @@ Returns the team number of a player.
 ==========================
 */
 
-extern "C" int DLLEXPORT HUD_GetPlayerTeam(int playerIndex)
+int DLLEXPORT HUD_GetPlayerTeam(int playerIndex)
 {
 	if (playerIndex < 1 || playerIndex > MAX_PLAYERS)
 		return 0;
