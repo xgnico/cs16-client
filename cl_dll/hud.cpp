@@ -47,6 +47,16 @@ cvar_t *cl_fog_density;
 
 extern client_sprite_t *GetSpriteList(client_sprite_t *pList, const char *psz, int iRes, int iCount);
 
+// Player info arrays
+hud_player_info_t   g_PlayerInfoList[MAX_PLAYERS+1]; // player info from the engine
+extra_player_info_t	g_PlayerExtraInfo[MAX_PLAYERS+1]; // additional player info sent directly to the client dll
+team_info_t         g_TeamInfo[MAX_TEAMS+1];
+hostage_info_t      g_HostageInfo[MAX_HOSTAGES+1];
+int g_iUser1;
+int g_iUser2;
+int g_iUser3;
+int g_iTeamNumber;
+
 // Team Colors
 int iNumberOfTeamColors = 3;
 int iTeamColors[3][3] =
