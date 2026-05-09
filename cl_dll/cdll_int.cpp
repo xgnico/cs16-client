@@ -256,7 +256,7 @@ Returns the team number of a player.
 ==========================
 */
 
-int DLLEXPORT HUD_GetPlayerTeam(int playerIndex)
+extern "C" int DLLEXPORT HUD_GetPlayerTeam(int playerIndex)
 {
 	if (playerIndex < 1 || playerIndex > MAX_PLAYERS)
 		return 0;
@@ -426,14 +426,6 @@ int DLLEXPORT HUD_MobilityInterface( mobile_engfuncs_t *mobileapi )
 
 extern "C" void DLLEXPORT HUD_ChatInputPosition( int *x, int *y )
 {
-}
-
-extern "C" int DLLEXPORT HUD_GetPlayerTeam(int iplayer)
-{
-	// original seems to return team_id, but I'm not sure it's even set somewhere
-	if ( iplayer <= MAX_PLAYERS )
-		return g_PlayerExtraInfo[iplayer].teamnumber;
-	return 0;
 }
 
 #include "APIProxy.h"
